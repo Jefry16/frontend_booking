@@ -1,7 +1,6 @@
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
-import { AppstoreOutlined } from "@ant-design/icons";
-
+import styles from "./navigation.module.scss";
 import Calendar from "./svg/calendar";
 import Home from "./svg/home";
 import Client from "./svg/clients";
@@ -10,6 +9,7 @@ import Providers from "./svg/providers";
 import Statistics from "./statistics";
 import Finance from "./svg/finance";
 import Settings from "./svg/settings";
+import { useState } from "react";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -41,15 +41,22 @@ const items: MenuProps["items"] = [
 ];
 
 export default function Navigation() {
+  const [collapsed, setCollapsed] = useState(false);
   const onClick: MenuProps["onClick"] = (e) => {
     console.log("click ", e);
   };
   return (
-    <Menu
-      inlineCollapsed={true}
-      mode="vertical"
-      items={items}
-      onClick={onClick}
-    />
+    <>
+      <div className={styles.expandbtn} onClick={() => setCollapsed(!collapsed)}>
+        ok
+      </div>
+      <Menu
+        style={{ height: "100%" }}
+        inlineCollapsed={collapsed}
+        mode="inline"
+        items={items}
+        onClick={onClick}
+      />
+    </>
   );
 }
