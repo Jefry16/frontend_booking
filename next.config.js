@@ -1,7 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-}
+const withLess = require("next-with-less");
 
-module.exports = nextConfig
+module.exports = withLess({
+  // reactStrictMode: true,
+  lessLoaderOptions: {},
+});
