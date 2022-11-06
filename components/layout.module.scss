@@ -1,0 +1,13 @@
+.layout {
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+    .aside{
+        background-color: red;
+        height: 100%;
+    }
+    .main{
+        background-color: darkblue;
+        height: 100%;
+    }
+}
