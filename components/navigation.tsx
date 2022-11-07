@@ -10,6 +10,8 @@ import Statistics from "./statistics";
 import Finance from "./svg/finance";
 import Settings from "./svg/settings";
 import { useState } from "react";
+import Collapse from "./svg/collapse";
+import Collapsed from "./svg/collapsed";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -41,17 +43,20 @@ const items: MenuProps["items"] = [
 ];
 
 export default function Navigation() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const onClick: MenuProps["onClick"] = (e) => {
     console.log("click ", e);
   };
   return (
     <>
-      <div className={styles.expandbtn} onClick={() => setCollapsed(!collapsed)}>
-        ok
+      <div
+        className={styles.expandbtn}
+        onClick={() => setCollapsed(!collapsed)}
+      >
+        {collapsed ? <Collapse /> : <Collapsed />}
       </div>
       <Menu
-        style={{ height: "100%" }}
+        style={{ height: "100%", boxShadow: "4px 0px 5px rgba(0, 0, 0, 0.1)" }}
         inlineCollapsed={collapsed}
         mode="inline"
         items={items}
