@@ -1,9 +1,10 @@
 import { Button } from "antd";
+import NavLink from "../components/nav-link";
 
 export default function Page() {
   return (
     <>
-      <h1>bookings</h1>
+      <h1>Reservas</h1>
     </>
   );
 }

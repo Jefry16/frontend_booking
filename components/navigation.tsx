@@ -13,6 +13,8 @@ import { useState } from "react";
 import Collapse from "./svg/collapse";
 import Collapsed from "./svg/collapsed";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import NavLink from "./nav-link";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -33,8 +35,12 @@ function getItem(
 }
 
 const items: MenuProps["items"] = [
-  getItem("Inicio", "bookings", <Home />),
-  getItem("Calendario", "calendar", <Calendar />),
+  getItem(<NavLink href="/bookings" name="Bookings" />, "bookings", <Home />),
+  getItem(
+    <NavLink href="/calendar" name="Calendario" />,
+    "calendar",
+    <Calendar />
+  ),
   getItem("Clientes", "clients", <Client />),
   getItem("Tours", "tours", <Tour />),
   getItem("Proveedores", "providers", <Providers />),
