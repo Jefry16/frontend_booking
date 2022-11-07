@@ -9,7 +9,7 @@ export default function Layout(props: { children: React.ReactNode }) {
       <aside className={styles.aside}>
         <Navigation />
       </aside>
-      <main className={styles.main}>{props.children}lorem*100 </main>
+      <main className={styles.main}>{props.children}</main>
     </div>
   );
 }

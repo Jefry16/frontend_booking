@@ -1,11 +1,12 @@
 .layout {
-    display: flex;
-    align-items: flex-start;
-    .aside{
-        height: 100vh;
-        position: relative;
-    }
-    .main{
-        background-color: darkblue;
-    }
+  display: flex;
+  align-items: flex-start;
+  .aside {
+    height: 100vh;
+    position: relative;
+  }
+  .main {
+    padding: 88px;
+    width: 100%;
+  }
 }

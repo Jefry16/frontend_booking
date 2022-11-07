@@ -12,6 +12,7 @@ import Settings from "./svg/settings";
 import { useState } from "react";
 import Collapse from "./svg/collapse";
 import Collapsed from "./svg/collapsed";
+import { useRouter } from "next/router";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -32,7 +33,7 @@ function getItem(
 }
 
 const items: MenuProps["items"] = [
-  getItem("Inicio", "start", <Home />),
+  getItem("Inicio", "bookings", <Home />),
   getItem("Calendario", "calendar", <Calendar />),
   getItem("Clientes", "clients", <Client />),
   getItem("Tours", "tours", <Tour />),
@@ -43,9 +44,12 @@ const items: MenuProps["items"] = [
 ];
 
 export default function Navigation() {
+  const router = useRouter();
   const [collapsed, setCollapsed] = useState(true);
+
   const onClick: MenuProps["onClick"] = (e) => {
     console.log("click ", e);
+    router.push(e.key);
   };
   return (
     <>
