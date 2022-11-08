@@ -10,8 +10,12 @@ export default function CustomTable(props: { columns: any[] }) {
     itemsCount: number;
     pages: number;
   }>();
+  const [selectedRowsCount, setSelectedRowsCount] = useState(0);
   const rowSelection = {
-    onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {},
+    onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
+      setSelectedRowsCount(selectedRowKeys.length);
+      console.log(selectedRowsCount);
+    },
     getCheckboxProps: (record: any) => ({
       disabled: record.name === "Disabled User", // Column configuration not to be checked
       name: record.name,
@@ -43,17 +47,20 @@ export default function CustomTable(props: { columns: any[] }) {
   }, []);
 
   return (
-    <Table
-      pagination={{
-        total: meta?.itemsCount,
-        showSizeChanger: true,
-      }}
-      loading={isLoading}
-      columns={props.columns}
-      dataSource={rows}
-      rowSelection={rowSelection}
-      rowKey={(record: any) => record.id}
-      onChange={onChange}
-    ></Table>
+    <>
+      <div>actions</div>
+      <Table
+        pagination={{
+          total: meta?.itemsCount,
+          showSizeChanger: true,
+        }}
+        loading={isLoading}
+        columns={props.columns}
+        dataSource={rows}
+        rowSelection={rowSelection}
+        rowKey={(record: any) => record.id}
+        onChange={onChange}
+      ></Table>
+    </>
   );
 }

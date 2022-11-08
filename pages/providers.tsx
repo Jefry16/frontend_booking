@@ -1,8 +1,6 @@
 import { Button } from "antd";
-import { useEffect, useState } from "react";
-import { columns } from "../columns/providers.columns";
+import { columns } from "../table-config/providers.columns";
 import CustomTable from "../components/custom-table";
-import useHttp from "../hooks/useHttp";
 import styles from "../styles/sass/provider.module.scss";
 export default function Page() {
   return (
