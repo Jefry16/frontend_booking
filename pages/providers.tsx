@@ -21,6 +21,18 @@ export default function Page() {
         <Button type="primary">Nuevo proveedor</Button>
       </header>
       <CustomTable loading={isLoading} columns={columns} dataSource={data} />
+      <p>ok</p>
+      <p>ok</p>
+      <p>ok</p>
+      <p>ok</p>
+      <p>ok</p>
+      <p>ok</p>
+      <p>ok</p>
+      <p>ok</p>
+      <p>ok</p>
+      <p>ok</p>
+      <p>ok</p>
+      <p>ok</p>
     </>
   );
 }
