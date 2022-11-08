@@ -41,16 +41,11 @@ const items: MenuProps["items"] = [
     "calendar",
     <Calendar />
   ),
-  getItem("Clientes", "clients", <Client />),
-  getItem("Tours", "tours", <Tour />),
   getItem(
     <NavLink name="Proveedores" href="/providers" />,
     "providers",
     <Providers />
   ),
-  getItem("Estadisticas", "statistics", <Statistics />),
-  getItem("Finanzas", "finances", <Finance />),
-  getItem("Ajustes", "settings", <Settings />),
 ];
 
 export default function Navigation() {
