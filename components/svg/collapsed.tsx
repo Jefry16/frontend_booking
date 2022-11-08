@@ -8,8 +8,8 @@ export default function Collapsed() {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M9.8 17L12 15.0167L4.77143 8.5L12 1.98333L9.8 0L0.371428 8.5L9.8 17Z"
         fill="#969B9C"
       />

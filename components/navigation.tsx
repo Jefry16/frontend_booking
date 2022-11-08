@@ -43,7 +43,11 @@ const items: MenuProps["items"] = [
   ),
   getItem("Clientes", "clients", <Client />),
   getItem("Tours", "tours", <Tour />),
-  getItem("Proveedores", "providers", <Providers />),
+  getItem(
+    <NavLink name="Proveedores" href="/providers" />,
+    "providers",
+    <Providers />
+  ),
   getItem("Estadisticas", "statistics", <Statistics />),
   getItem("Finanzas", "finances", <Finance />),
   getItem("Ajustes", "settings", <Settings />),
@@ -54,7 +58,6 @@ export default function Navigation() {
   const [collapsed, setCollapsed] = useState(true);
 
   const onClick: MenuProps["onClick"] = (e) => {
-    console.log("click ", e);
     router.push(e.key);
   };
   return (
@@ -70,7 +73,6 @@ export default function Navigation() {
         inlineCollapsed={collapsed}
         mode="inline"
         items={items}
-        onClick={onClick}
       />
     </>
   );
