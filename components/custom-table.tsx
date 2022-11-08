@@ -28,9 +28,7 @@ export default function CustomTable(props: { columns: any[] }) {
     sendRequest(
       { url: `/providers?page=${page}&limit=${limit}`, method: "get" },
       (backendData: any) => {
-        setRows(
-          backendData.data.map((data: any) => ({ ...data, key: data.id }))
-        );
+        setRows(backendData.data);
         setMeta(backendData.meta);
       }
     );
@@ -62,6 +60,7 @@ export default function CustomTable(props: { columns: any[] }) {
       columns={props.columns}
       dataSource={rows}
       rowSelection={rowSelection}
+      rowKey={(record: any) => record.id}
       onChange={onChange}
     ></Table>
   );
