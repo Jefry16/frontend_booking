@@ -11,13 +11,7 @@ export default function CustomTable(props: { columns: any[] }) {
     pages: number;
   }>();
   const rowSelection = {
-    onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
-      console.log(
-        `selectedRowKeys: ${selectedRowKeys}`,
-        "selectedRows: ",
-        selectedRows
-      );
-    },
+    onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {},
     getCheckboxProps: (record: any) => ({
       disabled: record.name === "Disabled User", // Column configuration not to be checked
       name: record.name,
@@ -39,14 +33,12 @@ export default function CustomTable(props: { columns: any[] }) {
     sorter,
     extra
   ) => {
-    console.log(filters, pagination);
     if (extra.action === "paginate") {
       fetchdata(pagination.current, pagination.pageSize);
     }
   };
 
   useEffect(() => {
-    console.log(1);
     fetchdata();
   }, []);
 
