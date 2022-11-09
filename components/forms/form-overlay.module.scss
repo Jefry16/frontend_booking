@@ -1,0 +1,24 @@
+@use "../../styles//variables.scss" as v;
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: 2rem;
+}
+
+.container {
+  background-color: hsl(0, 0%, 99%);
+  border-radius: 8px;
+  padding: 0 0 2rem 0;
+}
+
+.title {
+  margin: 0;
+  padding: 12px 20px;
+}
+
+.divider {
+  margin: 0;
+  margin-bottom: 6.5rem;
+  border-top-color: v.$primaryColor;
+}
