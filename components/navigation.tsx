@@ -6,7 +6,7 @@ import Home from "./svg/home";
 import Client from "./svg/clients";
 import Tour from "./svg/tour";
 import Providers from "./svg/providers";
-import Statistics from "./statistics";
+import Statistics from "./svg/statistics";
 import Finance from "./svg/finance";
 import Settings from "./svg/settings";
 import { useState } from "react";
