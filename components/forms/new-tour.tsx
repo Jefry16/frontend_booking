@@ -3,7 +3,7 @@ import useHttp from "../../hooks/useHttp";
 import FormOverlay from "./form-overlay";
 import styles from "./new-provider.module.scss";
 const { Item } = Form;
-export default function NewProvider(props: { onCancel: Function }) {
+export default function NewTour(props: { onCancel: Function }) {
   const { error, isLoading, sendRequest } = useHttp();
   const onFinish = (values: any) => {
     if (values.accept_payment === undefined) {
@@ -30,7 +30,7 @@ export default function NewProvider(props: { onCancel: Function }) {
     });
   };
   return (
-    <FormOverlay title="Nuevo proveedor">
+    <FormOverlay title="Nuevo tour">
       <Form
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
@@ -50,55 +50,6 @@ export default function NewProvider(props: { onCancel: Function }) {
             ]}
           >
             <Input />
-          </Item>
-
-          <Item
-            label="Persona a cargo"
-            name="person_in_charge"
-            rules={[
-              {
-                required: true,
-                message: "Inserte un nombre de persona a cargo",
-              },
-            ]}
-          >
-            <Input />
-          </Item>
-
-          <Item
-            label="Teléfono"
-            name="phone"
-            rules={[
-              { required: true, message: "Inserte un número de teléfono!" },
-            ]}
-          >
-            <Input />
-          </Item>
-
-          <Item
-            label="Correo"
-            name="email"
-            rules={[
-              { required: true, message: "Inserte un correo!" },
-              {
-                pattern:
-                  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: "correo invalido!",
-              },
-            ]}
-          >
-            <Input />
-          </Item>
-          <Item
-            label="¿Acepta pago?"
-            name="accept_payment"
-            valuePropName="checked"
-          >
-            <Switch
-              checkedChildren="si"
-              unCheckedChildren="no"
-              defaultChecked
-            />
           </Item>
         </div>
         <Item className={styles.btns}>

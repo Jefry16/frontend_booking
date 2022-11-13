@@ -15,7 +15,7 @@ export default function Page() {
           Nuevo proveedor
         </Button>
       </header>
-      <CustomTable columns={columns} />
+      <CustomTable columns={columns} url="providers" />
     </>
   );
 }

@@ -41,6 +41,7 @@ const items: MenuProps["items"] = [
     "calendar",
     <Calendar />
   ),
+  getItem(<NavLink name="Tours" href="/tours" />, "tours", <Tour />),
   getItem(
     <NavLink name="Proveedores" href="/providers" />,
     "providers",

@@ -1,0 +1,12 @@
+div.ant-form-item {
+  .ant-row.ant-form-item-row {
+    flex-flow: column wrap;
+    text-align: revert;
+    .ant-col.ant-form-item-label {
+      text-align: initial;
+    }
+    .ant-form-item-required::before, .ant-form-item-required::after {
+      content: unset ;
+    }
+  }
+}

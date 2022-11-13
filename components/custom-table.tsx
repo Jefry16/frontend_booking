@@ -2,7 +2,7 @@ import { Table, TableProps } from "antd";
 import { useState, useEffect } from "react";
 import useHttp from "../hooks/useHttp";
 
-export default function CustomTable(props: { columns: any[] }) {
+export default function CustomTable(props: { columns: any[]; url: string }) {
   const [rows, setRows] = useState([]);
   const { error, isLoading, sendRequest } = useHttp();
   const [meta, setMeta] = useState<{
@@ -24,7 +24,7 @@ export default function CustomTable(props: { columns: any[] }) {
 
   function fetchdata(page: number = 1, limit: number = 10) {
     sendRequest(
-      { url: `/providers?page=${page}&limit=${limit}`, method: "get" },
+      { url: `/${props.url}?page=${page}&limit=${limit}`, method: "get" },
       (backendData: any) => {
         setRows(backendData.data);
         setMeta(backendData.meta);
