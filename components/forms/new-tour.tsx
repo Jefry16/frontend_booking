@@ -1,39 +1,35 @@
 import { Button, Form, Input, InputNumber, notification, Select } from "antd";
 import { useEffect, useState } from "react";
-import useHttp from "../../hooks/useHttp";
+import { useConnectPost, useFetch } from "../../hooks/connectHttp";
 import FormOverlay from "./form-overlay";
 import styles from "./new-provider.module.scss";
 const { Item } = Form;
 export default function NewTour(props: { onCancel: Function }) {
-  // const { error, isLoading, sendRequest } = useHttp();
-  const {
-    error: providersError,
-    isLoading: providersLoading,
-    sendRequest
-  } = useHttp();
+  const { mutate } = useConnectPost();
 
   const [providers, setProviders] = useState([]);
-  const onFinish = (values: any) => {
-    if (values.accept_payment === undefined) {
-      values.accept_payment = true;
-    }
-    // sendRequest(
-    //   { url: "/providers", method: "post", body: { ...values } },
-    //   (data: any) => {
-    //     console.log(data);
-    //     if (data.id) {
-    //       showAlert();
-    //       props.onCancel();
-    //     }
-    //   }
-    // );
+
+  const transformProvider = (data: any) => {
+    return data.data.data.map((provider: any) => ({
+      label: provider.name,
+      value: provider.name + "." + provider.id,
+    }));
   };
 
-  useEffect(() => {
-    sendRequest({ url: "providers", method: "get" }, (data: any) =>
-      console.log(data)
-    );
+  const { isLoading } = useFetch(`providers?page=1&limit=1500`, {
+    select: (data: any) => transformProvider(data),
+    onSuccess: (data: any) => setProviders(data),
   });
+
+  const onFinish = (values: any) => {
+    if (values.providerId) {
+      values.providerId = Number(values.providerId.split(".").at(-1));
+    }
+    mutate({ data: values, url: "tours" });
+    props.onCancel();
+    console.log(values);
+  };
+
   const onFinishFailed = (errorInfo: any) => {};
 
   const showAlert = () => {
@@ -59,15 +55,13 @@ export default function NewTour(props: { onCancel: Function }) {
           <Item
             label="Nombre"
             name="name"
-            rules={[
-              { required: true, message: "Inserte un nombre de proveedor" },
-            ]}
+            rules={[{ required: true, message: "Inserte un nombre de tour" }]}
           >
             <Input />
           </Item>
           <Item
             label="Precio por adulto"
-            name="adultPrice"
+            name="priceAdult"
             rules={[
               { required: true, message: "Inserte un precio por adulto" },
             ]}
@@ -76,22 +70,26 @@ export default function NewTour(props: { onCancel: Function }) {
           </Item>
           <Item
             label="Precio por niño"
-            name="kidPrice"
+            name="priceKid"
             rules={[{ required: true, message: "Inserte un precio por niño" }]}
           >
             <InputNumber addonAfter="$" min={1} />
           </Item>
-          <Item>
+          <Item
+            name="providerId"
+            rules={[{ required: true, message: "Selecione un proveedor" }]}
+          >
             <Select
               placeholder="Selecione un proveedor"
               showSearch
-              options={providers}
-              onSearch={(v: string) => {}}
+              options={[...providers]}
+              onSearch={(search: string) => {}}
+              loading={isLoading}
             ></Select>
           </Item>
         </div>
         <Item className={styles.btns}>
-          <Button type="primary" htmlType="submit" >
+          <Button type="primary" htmlType="submit">
             Submit
           </Button>
           <Button

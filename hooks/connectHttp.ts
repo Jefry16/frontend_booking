@@ -14,6 +14,13 @@ export async function fetchTableData(config: AxiosRequestConfig) {
   const { data } = await baseAxios.request(config);
   return data;
 }
+export function useFetch(url: string, config?: any) {
+  return useQuery([url], () => baseAxios.get(url), {
+    cacheTime: 0,
+    staleTime: 0,
+    ...config,
+  });
+}
 
 export function useFetchById(id: number | string, config: AxiosRequestConfig) {
   return useQuery([config.url, id], () => baseAxios.get(`${config.url}/${id}`));

@@ -1,5 +1,5 @@
 import { Button } from "antd";
-import { columns } from "../table-config/providers.columns";
+import { columns } from "../table-config/tours.columns";
 import CustomTable from "../components/custom-table";
 import styles from "../styles/sass/provider.module.scss";
 import { useState } from "react";
