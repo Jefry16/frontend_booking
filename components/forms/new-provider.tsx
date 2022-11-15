@@ -5,7 +5,7 @@ import styles from "./new-provider.module.scss";
 
 const { Item } = Form;
 export default function NewProvider(props: { onCancel: Function }) {
-  const { mutate, data } = useConnectPost();
+  const { mutate, data, isLoading } = useConnectPost();
 
   const onFinish = (values: any) => {
     if (values.accept_payment === undefined) {
@@ -98,7 +98,7 @@ export default function NewProvider(props: { onCancel: Function }) {
           </Item>
         </div>
         <Item className={styles.btns}>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" loading={isLoading}>
             Submit
           </Button>
           <Button
