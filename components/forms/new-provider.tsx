@@ -1,24 +1,20 @@
-import { Alert, Button, Form, Input, notification, Switch } from "antd";
-import useHttp from "../../hooks/useHttp";
+import { Button, Form, Input, notification, Switch } from "antd";
+import { useConnectPost } from "../../hooks/connectHttp";
 import FormOverlay from "./form-overlay";
 import styles from "./new-provider.module.scss";
+
 const { Item } = Form;
 export default function NewProvider(props: { onCancel: Function }) {
-  const { error, isLoading, sendRequest } = useHttp();
+  const { mutate, data } = useConnectPost();
+
   const onFinish = (values: any) => {
     if (values.accept_payment === undefined) {
       values.accept_payment = true;
     }
-    sendRequest(
-      { url: "/providers", method: "post", body: { ...values } },
-      (data: any) => {
-        console.log(data);
-        if (data.id) {
-          showAlert();
-          props.onCancel();
-        }
-      }
-    );
+    mutate({ data: values, url: "providers" });
+    props.onCancel();
+    showAlert();
+    console.log(data);
   };
 
   const onFinishFailed = (errorInfo: any) => {};
@@ -102,7 +98,7 @@ export default function NewProvider(props: { onCancel: Function }) {
           </Item>
         </div>
         <Item className={styles.btns}>
-          <Button type="primary" htmlType="submit" loading={isLoading}>
+          <Button type="primary" htmlType="submit">
             Submit
           </Button>
           <Button

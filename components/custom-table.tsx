@@ -1,16 +1,21 @@
 import { Table, TableProps } from "antd";
-import { useState, useEffect } from "react";
-import useHttp from "../hooks/useHttp";
+import { useState } from "react";
+import { useQuery } from "react-query";
+import { fetchTableData } from "../hooks/connectHttp";
 
 export default function CustomTable(props: { columns: any[]; url: string }) {
-  const [rows, setRows] = useState([]);
-  const { error, isLoading, sendRequest } = useHttp();
-  const [meta, setMeta] = useState<{
-    currentPage: number;
-    itemsCount: number;
-    pages: number;
-  }>();
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+
+  const { isLoading, data } = useQuery(
+    [props.url, page, limit],
+    fetchTableData.bind(null, {
+      url: `${props.url}?page=${page}&limit=${limit}`,
+      method: "get",
+    })
+  );
   const [selectedRowsCount, setSelectedRowsCount] = useState(0);
+
   const rowSelection = {
     onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
       setSelectedRowsCount(selectedRowKeys.length);
@@ -22,15 +27,6 @@ export default function CustomTable(props: { columns: any[]; url: string }) {
     }),
   };
 
-  function fetchdata(page: number = 1, limit: number = 10) {
-    sendRequest(
-      { url: `/${props.url}?page=${page}&limit=${limit}`, method: "get" },
-      (backendData: any) => {
-        setRows(backendData.data);
-        setMeta(backendData.meta);
-      }
-    );
-  }
   const onChange: TableProps<{}>["onChange"] = (
     pagination,
     filters,
@@ -38,25 +34,22 @@ export default function CustomTable(props: { columns: any[]; url: string }) {
     extra
   ) => {
     if (extra.action === "paginate") {
-      fetchdata(pagination.current, pagination.pageSize);
+      setPage(pagination.current || 1);
+      setLimit(pagination.pageSize || 10);
     }
   };
-
-  useEffect(() => {
-    fetchdata();
-  }, []);
 
   return (
     <>
       <div>actions</div>
       <Table
+        loading={isLoading}
         pagination={{
-          total: meta?.itemsCount,
+          total: data?.meta?.itemsCount,
           showSizeChanger: true,
         }}
-        loading={isLoading}
         columns={props.columns}
-        dataSource={rows}
+        dataSource={data?.data}
         rowSelection={rowSelection}
         rowKey={(record: any) => record.id}
         onChange={onChange}
