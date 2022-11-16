@@ -15,6 +15,7 @@ import Collapsed from "./svg/collapsed";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import NavLink from "./nav-link";
+import { MailFilled, MailOutlined, MailTwoTone } from "@ant-design/icons";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -52,7 +53,7 @@ const items: MenuProps["items"] = [
 export default function Navigation() {
   const router = useRouter();
   const [collapsed, setCollapsed] = useState(true);
-
+  console.log(router.pathname);
   const onClick: MenuProps["onClick"] = (e) => {
     router.push(e.key);
   };
@@ -69,6 +70,8 @@ export default function Navigation() {
         inlineCollapsed={collapsed}
         mode="inline"
         items={items}
+        defaultSelectedKeys={[router.pathname.substring(1)]}
+        defaultOpenKeys={[router.pathname.substring(1)]}
       />
     </>
   );
