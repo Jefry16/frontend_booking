@@ -5,7 +5,7 @@ import FormOverlay from "./form-overlay";
 import styles from "./new-provider.module.scss";
 const { Item } = Form;
 export default function NewTour(props: { onCancel: Function }) {
-  const { mutate } = useConnectPost();
+  const { mutate, status, isError } = useConnectPost();
 
   const [providers, setProviders] = useState([]);
 
@@ -27,7 +27,9 @@ export default function NewTour(props: { onCancel: Function }) {
     }
     mutate({ data: values, url: "tours" });
     props.onCancel();
-    console.log(values);
+    if(!isError){
+      showAlert();
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {};
