@@ -4,7 +4,7 @@ import CustomTable from "../components/custom-table";
 import styles from "../styles/sass/provider.module.scss";
 import { useState } from "react";
 import NewClient from "../components/forms/new-client";
-export default function Page() {
+export default function Clients() {
   const [providerForm, setProviderForm] = useState(false);
   return (
     <>
