@@ -48,6 +48,11 @@ const items: MenuProps["items"] = [
     "providers",
     <Providers />
   ),
+  getItem(
+    <NavLink name="Clientes" href="/clients" />,
+    "clients",
+    <Client />
+  ),
 ];
 
 export default function Navigation() {
