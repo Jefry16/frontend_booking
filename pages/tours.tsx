@@ -4,6 +4,8 @@ import CustomTable from "../components/custom-table";
 import styles from "../styles/sass/provider.module.scss";
 import { useState } from "react";
 import NewTour from "../components/forms/new-tour";
+import { test, remove } from "../table-config/actions";
+
 export default function Tours() {
   const [tourForm, setTourForm] = useState(false);
   return (
@@ -15,7 +17,7 @@ export default function Tours() {
           Nuevo tour
         </Button>
       </header>
-      <CustomTable columns={columns} url='tours' />
+      <CustomTable columns={columns} url="tours" actions={[test, remove]} />
     </>
   );
 }

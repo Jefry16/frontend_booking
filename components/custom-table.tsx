@@ -2,8 +2,14 @@ import { Table, TableProps } from "antd";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { fetchTableData } from "../hooks/connectHttp";
+import TableActions from "./table-actions";
+import Action from "../interfaces/table-action.interface";
 
-export default function CustomTable(props: { columns: any[]; url: string }) {
+export default function CustomTable(props: {
+  columns: any[];
+  url: string;
+  actions: Action[];
+}) {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
 
@@ -14,12 +20,11 @@ export default function CustomTable(props: { columns: any[]; url: string }) {
       method: "get",
     })
   );
-  const [selectedRowsCount, setSelectedRowsCount] = useState(0);
+  const [selectedIds, setSelectedIds] = useState<number[]>([]);
 
   const rowSelection = {
     onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
-      setSelectedRowsCount(selectedRowKeys.length);
-      console.log(selectedRowsCount);
+      setSelectedIds(selectedRows.map((row) => row.id));
     },
     getCheckboxProps: (record: any) => ({
       disabled: record.name === "Disabled User", // Column configuration not to be checked
@@ -41,7 +46,9 @@ export default function CustomTable(props: { columns: any[]; url: string }) {
 
   return (
     <>
-      <div>actions</div>
+      {selectedIds.length > 0 && (
+        <TableActions ids={selectedIds} actions={props.actions} />
+      )}
       <Table
         loading={isLoading}
         pagination={{

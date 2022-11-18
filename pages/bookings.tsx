@@ -15,7 +15,7 @@ export default function Bookings() {
           Nueva reserva
         </Button>
       </header>
-      <CustomTable columns={columns} url="clients" />
+      <CustomTable columns={columns} url="clients" actions={[]} />
     </>
   );
 }

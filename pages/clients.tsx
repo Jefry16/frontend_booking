@@ -15,7 +15,7 @@ export default function Clients() {
           Nuevo cliente
         </Button>
       </header>
-      <CustomTable columns={columns} url="clients" />
+      <CustomTable columns={columns} url="clients" actions={[]}/>
     </>
   );
 }
