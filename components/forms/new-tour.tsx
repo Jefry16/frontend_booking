@@ -1,11 +1,11 @@
 import { Button, Form, Input, InputNumber, notification, Select } from "antd";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useConnectPost, useFetch } from "../../hooks/connectHttp";
 import FormOverlay from "./form-overlay";
 import styles from "./new-provider.module.scss";
 const { Item } = Form;
 export default function NewTour(props: { onCancel: Function }) {
-  const { mutate, status, isError } = useConnectPost();
+  const { mutate, isError } = useConnectPost();
 
   const [providers, setProviders] = useState([]);
 
@@ -27,7 +27,7 @@ export default function NewTour(props: { onCancel: Function }) {
     }
     mutate({ data: values, url: "tours" });
     props.onCancel();
-    if(!isError){
+    if (!isError) {
       showAlert();
     }
   };

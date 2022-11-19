@@ -4,14 +4,15 @@ import CustomTable from "../components/custom-table";
 import styles from "../styles/sass/provider.module.scss";
 import { useState } from "react";
 import NewClient from "../components/forms/new-client";
+import NewBooking from "../components/forms/new-booking";
 export default function Bookings() {
-  const [providerForm, setProviderForm] = useState(false);
+  const [bookingForm, setBookingForm] = useState(false);
   return (
     <>
-      {providerForm && <NewClient onCancel={() => setProviderForm(false)} />}
+      {bookingForm && <NewBooking onCancel={() => setBookingForm(false)} />}
       <header className={styles.header}>
         <h1>Reservas</h1>
-        <Button type="primary" onClick={() => setProviderForm(true)}>
+        <Button type="primary" onClick={() => setBookingForm(true)}>
           Nueva reserva
         </Button>
       </header>

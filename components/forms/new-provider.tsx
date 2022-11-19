@@ -5,7 +5,7 @@ import styles from "./new-provider.module.scss";
 
 const { Item } = Form;
 export default function NewProvider(props: { onCancel: Function }) {
-  const { mutate, data, isLoading } = useConnectPost();
+  const { mutate,  isLoading } = useConnectPost();
 
   const onFinish = (values: any) => {
     if (values.accept_payment === undefined) {
@@ -14,7 +14,6 @@ export default function NewProvider(props: { onCancel: Function }) {
     mutate({ data: values, url: "providers" });
     props.onCancel();
     showAlert();
-    console.log(data);
   };
 
   const onFinishFailed = (errorInfo: any) => {};

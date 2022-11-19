@@ -1,0 +1,32 @@
+@use "../../styles/variables.scss" as v;
+
+.back {
+  position: absolute;
+  top: 75px;
+  left: 0;
+}
+.question {
+  text-align: center;
+  height: 300px;
+  .title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .btnContainer {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    .btn {
+      min-width: 275px;
+      min-height: 90px;
+      color: v.$primaryColor;
+      border: 1px solid v.$primaryColor;
+      font-weight: bold;
+      font-size: 14px;
+      &:hover {
+        color: #39b5b8;
+        border-color: #39b5b8;
+      }
+    }
+  }
+}
