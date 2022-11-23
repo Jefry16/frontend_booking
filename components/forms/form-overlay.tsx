@@ -3,7 +3,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 import style from "./form-overlay.module.scss";
-const FormOverlay = (props: { children: ReactNode; title: string }) => {
+const FormOverlay = (props: { children: ReactNode; title: ReactNode }) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
