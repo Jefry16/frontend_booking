@@ -4,7 +4,7 @@ import CustomTable from "../components/custom-table";
 import styles from "../styles/sass/provider.module.scss";
 import { useState } from "react";
 import NewClient from "../components/forms/new-client";
-import NewBooking from "../components/forms/new-booking";
+import NewBooking from "../components/forms/booking/new-booking";
 export default function Bookings() {
   const [bookingForm, setBookingForm] = useState(false);
   return (

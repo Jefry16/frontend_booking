@@ -1,7 +1,7 @@
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Select } from "antd";
 import { useState } from "react";
-import FormOverlay from "./form-overlay";
+import FormOverlay from "../form-overlay";
 import styles from "./new-booking.module.scss";
 const { Item } = Form;
 
