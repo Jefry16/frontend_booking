@@ -22,8 +22,16 @@ export function useFetch(url: string, config?: any) {
   });
 }
 
-export function useFetchById(id: number | string, config: AxiosRequestConfig) {
-  return useQuery([config.url, id], () => baseAxios.get(`${config.url}/${id}`));
+export function useFetchById(
+  id: number | string,
+  axiosConfig: AxiosRequestConfig,
+  queryConfig: any
+) {
+  return useQuery(
+    [axiosConfig.url, id],
+    () => baseAxios.get(`${axiosConfig.url}/${id}`),
+    { ...queryConfig }
+  );
 }
 export function useConnectPost() {
   return useMutation((config: any) => baseAxios.post(config.url, config.data));

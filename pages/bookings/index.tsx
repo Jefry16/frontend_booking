@@ -13,7 +13,7 @@ export default function Bookings() {
       label: "Cliente existente",
       key: "item-1",
       onClick: () => {
-        router.push("/bookings/new-existing-client");
+        router.push("/bookings/existing-client");
       },
     },
     { label: "Nuevo cliente", key: "item-2" },
