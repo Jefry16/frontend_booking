@@ -84,10 +84,10 @@ export default function NewClient(props: { onCancel: Function }) {
           </Item>
           <Item
             name="country"
-            rules={[{ required: true, message: "Selecione una nacionalidad" }]}
+            rules={[{ required: true, message: "Selecione un pais" }]}
           >
             <Select
-              placeholder="Selecione una nacionalidad"
+              placeholder="Selecione un pais"
               showSearch
               options={[
                 { label: "Portugal", value: "portugal" },

@@ -1,0 +1,9 @@
+.layout {
+  display: flex;
+  border-top: 1px solid rgb(100, 64, 64);
+
+  .sidebar {
+    min-width: 385px;
+    border-top: 1px solid red;
+  }
+}
