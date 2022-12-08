@@ -1,13 +1,13 @@
 import { Button } from "antd";
 import { columns } from "../table-config/clients.columns";
 import CustomTable from "../components/custom-table";
-import styles from "../styles/sass/provider.module.scss";
+import styles from "../styles/sass/clients.module.scss";
 import { useState } from "react";
 import NewClient from "../components/forms/new-client";
 export default function Clients() {
   const [providerForm, setProviderForm] = useState(false);
   return (
-    <>
+    <div className={styles.container}>
       {providerForm && <NewClient onCancel={() => setProviderForm(false)} />}
       <header className={styles.header}>
         <h1>Clientes</h1>
@@ -15,7 +15,7 @@ export default function Clients() {
           Nuevo cliente
         </Button>
       </header>
-      <CustomTable columns={columns} url="clients" actions={[]}/>
-    </>
+      <CustomTable columns={columns} url="clients" actions={[]} />
+    </div>
   );
 }

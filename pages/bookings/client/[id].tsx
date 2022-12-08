@@ -112,11 +112,17 @@ export default function NewExistingClient() {
           {bookingId}
         </Title>
         <div className={styles.modalBtns}>
-          <Button onClick={()=>window.location.href='http://localhost:3001/calendar'} type="default" children="Ir al calendario" />
+          <Button
+            onClick={() =>
+              (window.location.href = "http://localhost:3001/calendar")
+            }
+            type="default"
+            children="Ir al calendario"
+          />
           <Button type="primary" children="Ir a inicio" />
         </div>
       </Modal>
-      <h2>Nueva reserva / Cliente existente / Realizar reserva</h2>
+      <h2>Nueva reserva / Realizar reserva</h2>
       <div className={styles.layout}>
         <div className={styles.sidebar}>
           <Title level={5}>Datos del cliente</Title>

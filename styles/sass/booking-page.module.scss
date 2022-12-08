@@ -1,6 +1,12 @@
 @use "../variables.scss" as v;
 
 .container {
+  h2 {
+    padding-top: 60px;
+    width: 90%;
+    margin: 0 auto;
+    color: #969b9c;
+  }
   .successModal {
     display: none !important;
   }
@@ -26,7 +32,7 @@
       .title {
         margin: 0;
         color: #333;
-        font-weight: bold;
+        font-weight: 500;
         font-size: 14px;
       }
     }
@@ -81,7 +87,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 7px 12px;
-            font-weight: bold;
+            font-weight: 500;
             font-size: 14px;
           }
         }

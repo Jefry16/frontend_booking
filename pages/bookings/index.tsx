@@ -19,7 +19,7 @@ export default function Bookings() {
     { label: "Nuevo cliente", key: "item-2" },
   ];
   return (
-    <>
+    <div className={styles.container}>
       <header className={styles.header}>
         <h1>Reservas</h1>
         <Dropdown menu={{ items }}>
@@ -29,6 +29,6 @@ export default function Bookings() {
         </Dropdown>
       </header>
       <CustomTable columns={columns} url="bookings" actions={[]} />
-    </>
+    </div>
   );
 }

@@ -7,7 +7,7 @@ import { useState } from "react";
 export default function Providers() {
   const [providerForm, setProviderForm] = useState(false);
   return (
-    <>
+    <div className={styles.container}>
       {providerForm && <NewProvider onCancel={() => setProviderForm(false)} />}
       <header className={styles.header}>
         <h1>Proveedores</h1>
@@ -15,7 +15,7 @@ export default function Providers() {
           Nuevo proveedor
         </Button>
       </header>
-      <CustomTable columns={columns} url="providers" actions={[]}/>
-    </>
+      <CustomTable columns={columns} url="providers" actions={[]} />
+    </div>
   );
 }

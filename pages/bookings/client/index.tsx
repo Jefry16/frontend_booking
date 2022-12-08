@@ -27,11 +27,11 @@ export default function NewExistingClient() {
 
   return (
     <div className={styles.container}>
-      <h2>Nueva reserva / Cliente existente</h2>
+      <h2>Nueva reserva / Buscar cliente ya existente</h2>
       <div className={styles.layout}>
         <div className={styles.sidebar}>
           <Title level={5}> Buscar cliente</Title>
-          <p>
+          <p style={{ fontSize: "14px" }}>
             Rellena al menos uno de los siguientes campos para realizar la
             búsqueda.
           </p>
@@ -98,9 +98,7 @@ export default function NewExistingClient() {
             />
             <Button
               children="Continuar"
-              onClick={() =>
-                router.push(`/bookings/client/${selectedClient}`)
-              }
+              onClick={() => router.push(`/bookings/client/${selectedClient}`)}
               disabled={selectedClient === ""}
               type="primary"
             />
