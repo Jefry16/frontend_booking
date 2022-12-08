@@ -35,13 +35,13 @@ function getItem(
 }
 
 const items: MenuProps["items"] = [
-  getItem(<NavLink href="/bookings" name="Bookings" />, "bookings", <Home />),
+  getItem(<NavLink href="/bookings" name="Reservas" />, "reservas", <Home />),
   getItem(
     <NavLink href="/calendar" name="Calendario" />,
     "calendar",
     <Calendar />
   ),
-  getItem(<NavLink name="Tours" href="/tours" />, "tours", <Tour />),
+  getItem(<NavLink name="Servicios" href="/tours" />, "servicios", <Tour />),
   getItem(<NavLink name="Clientes" href="/clients" />, "clients", <Client />),
   getItem(
     <NavLink name="Proveedores" href="/providers" />,

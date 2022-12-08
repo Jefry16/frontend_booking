@@ -17,7 +17,7 @@ export const columns: ColumnsType = [
     key: "email",
   },
   {
-    title: "Telefono",
+    title: "Teléfono",
     dataIndex: "phone",
     key: "phone",
   },
@@ -27,9 +27,9 @@ export const columns: ColumnsType = [
     key: "accept_payment",
     render: (text) => {
       if (text) {
-        return "si";
+        return "Sí";
       }
-      return "no";
+      return "No";
     },
   },
 ];

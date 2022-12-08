@@ -1,12 +1,12 @@
-import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Button, Divider, Form, Input, notification, Table } from "antd";
-import Link from "next/link";
+import { Typography } from "antd";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useFetch } from "../../../hooks/connectHttp";
 import styles from "../../../styles/sass/new-existing-client.module.scss";
 import { columns } from "../../../table-config/existing-clients.columns";
 const { Item } = Form;
+const { Title } = Typography;
 export default function NewExistingClient() {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -15,7 +15,7 @@ export default function NewExistingClient() {
   const [clients, setClients] = useState();
   const [selectedClient, setSelectedClient] = useState("");
   const router = useRouter();
-  const { refetch, isFetched } = useFetch(
+  const { refetch, isLoading } = useFetch(
     `/clients/filtered?first_name=${name}&last_name=${lastName}&email=${email}&phone=${phone}`,
     {
       enabled: false,
@@ -30,11 +30,7 @@ export default function NewExistingClient() {
       <h2>Nueva reserva / Cliente existente</h2>
       <div className={styles.layout}>
         <div className={styles.sidebar}>
-          <Link href={"/bookings"}>
-            <ArrowLeftOutlined />
-            Atrás
-          </Link>
-          <p>Buscar cliente</p>
+          <Title level={5}> Buscar cliente</Title>
           <p>
             Rellena al menos uno de los siguientes campos para realizar la
             búsqueda.
@@ -48,7 +44,7 @@ export default function NewExistingClient() {
                 refetch();
               } else {
                 notification.open({
-                  message: "rellenar al menos uno",
+                  message: "Rellene al menos un campo de búsqueda.",
                   placement: "bottomLeft",
                 });
               }
@@ -61,7 +57,7 @@ export default function NewExistingClient() {
               <Item label="Apellidos" initialValue={""} name="last_name">
                 <Input onChange={({ target }) => setLastName(target.value)} />
               </Item>
-              <Item label="Correo" initialValue={""} name="email">
+              <Item label="Email" initialValue={""} name="email">
                 <Input onChange={({ target }) => setEmail(target.value)} />
               </Item>
               <Item label="Teléfono" initialValue={""} name="phone">
@@ -73,9 +69,12 @@ export default function NewExistingClient() {
             </Button>
           </Form>
         </div>
-
+        <Divider type="vertical" className={styles.divider} />
         <div className={styles.content}>
+          <Title level={5}> Resultados de búsqueda</Title>
           <Table
+            className={styles.table}
+            loading={isLoading}
             rowSelection={{
               type: "radio",
               onChange: (selectedRowKeys: React.Key[], selectedRows: any) => {
@@ -91,15 +90,21 @@ export default function NewExistingClient() {
             columns={columns}
             dataSource={clients}
           ></Table>
-          <Button
-            onClick={() =>
-              router.push(`/bookings/existing-client/${selectedClient}`)
-            }
-            disabled={selectedClient === ""}
-            type="primary"
-          >
-            Continuar
-          </Button>
+          <div className={styles.buttons}>
+            <Button
+              children="Cancelar"
+              onClick={() => router.push(`/bookings`)}
+              type="default"
+            />
+            <Button
+              children="Continuar"
+              onClick={() =>
+                router.push(`/bookings/client/${selectedClient}`)
+              }
+              disabled={selectedClient === ""}
+              type="primary"
+            />
+          </div>
         </div>
       </div>
     </div>

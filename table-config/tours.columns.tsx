@@ -13,7 +13,7 @@ export const columns: ColumnsType = [
     render: (text) => `$ ${text}`,
   },
   {
-    title: "Precio niños",
+    title: "Precio niño",
     dataIndex: "price_kid",
     key: "price_kid",
     render: (text) => `$ ${text}`,

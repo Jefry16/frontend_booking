@@ -5,7 +5,7 @@ import styles from "./new-provider.module.scss";
 
 const { Item } = Form;
 export default function NewProvider(props: { onCancel: Function }) {
-  const { mutate,  isLoading } = useConnectPost();
+  const { mutate, isLoading } = useConnectPost();
 
   const onFinish = (values: any) => {
     if (values.accept_payment === undefined) {
@@ -20,7 +20,7 @@ export default function NewProvider(props: { onCancel: Function }) {
 
   const showAlert = () => {
     notification.open({
-      message: "proveedor añadido",
+      message: "Proveedor añadido.",
       placement: "bottomLeft",
     });
   };
@@ -64,21 +64,21 @@ export default function NewProvider(props: { onCancel: Function }) {
             label="Teléfono"
             name="phone"
             rules={[
-              { required: true, message: "Inserte un número de teléfono!" },
+              { required: true, message: "Inserte un número de teléfono" },
             ]}
           >
             <Input />
           </Item>
 
           <Item
-            label="Correo"
+            label="Email"
             name="email"
             rules={[
-              { required: true, message: "Inserte un correo!" },
+              { required: true, message: "Inserte un email" },
               {
                 pattern:
                   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: "correo invalido!",
+                message: "Email inválido",
               },
             ]}
           >
@@ -90,22 +90,23 @@ export default function NewProvider(props: { onCancel: Function }) {
             valuePropName="checked"
           >
             <Switch
-              checkedChildren="si"
-              unCheckedChildren="no"
+              checkedChildren="Sí"
+              unCheckedChildren="No"
               defaultChecked
             />
           </Item>
         </div>
         <Item className={styles.btns}>
-          <Button type="primary" htmlType="submit" loading={isLoading}>
-            Submit
-          </Button>
           <Button
             type="default"
             htmlType="button"
             onClick={() => props.onCancel()}
           >
             Cancelar
+          </Button>
+
+          <Button type="primary" htmlType="submit" loading={isLoading}>
+            Guardar
           </Button>
         </Item>
       </Form>

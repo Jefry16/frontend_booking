@@ -12,12 +12,14 @@ export default function NewClient(props: { onCancel: Function }) {
       { data: values, url: "clients" },
       {
         onError: () => {
-          showAlert("algo salio mal");
+          showAlert(
+            "Algo salió mal. Inténtelo de nuevo o comúniquese con soporte."
+          );
           props.onCancel();
         },
         onSuccess: () => {
           props.onCancel();
-          showAlert("cliente añadido");
+          showAlert("Cliente añadido.");
         },
       }
     );
@@ -55,57 +57,59 @@ export default function NewClient(props: { onCancel: Function }) {
           <Item
             label="Apellidos"
             name="lastName"
-            rules={[{ required: true, message: "Inserte al menos apellidos" }]}
+            rules={[
+              { required: true, message: "Inserte al menos un apellido" },
+            ]}
           >
             <Input />
           </Item>
           <Item
-            label="Correo"
+            label="Email"
             name="email"
             rules={[
-              { required: true, message: "Inserte un correo" },
+              { required: true, message: "Inserte un email" },
               {
                 pattern:
                   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: "correo invalido!",
+                message: "Email inválido",
               },
             ]}
           >
             <Input />
           </Item>
           <Item
-            label="Telefono"
+            label="Teléfono"
             name="phone"
             rules={[
-              { required: true, message: "Inserte un precio por adulto" },
+              { required: true, message: "Inserte un número de teléfono" },
             ]}
           >
             <Input />
           </Item>
           <Item
             name="country"
-            rules={[{ required: true, message: "Selecione un pais" }]}
+            rules={[{ required: true, message: "Selecione un país" }]}
           >
             <Select
-              placeholder="Selecione un pais"
+              placeholder="Selecione un país"
               showSearch
               options={[
                 { label: "Portugal", value: "portugal" },
-                { label: "Brazil", value: "brazil" },
+                { label: "Brasil", value: "brasil" },
               ]}
             ></Select>
           </Item>
         </div>
         <Item className={styles.btns}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
           <Button
             type="default"
             htmlType="button"
             onClick={() => props.onCancel()}
           >
             Cancelar
+          </Button>
+          <Button type="primary" htmlType="submit">
+            Guardar
           </Button>
         </Item>
       </Form>

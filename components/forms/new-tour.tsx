@@ -36,13 +36,13 @@ export default function NewTour(props: { onCancel: Function }) {
 
   const showAlert = () => {
     notification.open({
-      message: "tour añadido",
+      message: "Tour añadido.",
       placement: "bottomLeft",
     });
   };
 
   return (
-    <FormOverlay title="Nuevo tour">
+    <FormOverlay title="Nuevo servicio">
       <Form
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
@@ -91,15 +91,15 @@ export default function NewTour(props: { onCancel: Function }) {
           </Item>
         </div>
         <Item className={styles.btns}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
           <Button
             type="default"
             htmlType="button"
             onClick={() => props.onCancel()}
           >
             Cancelar
+          </Button>
+          <Button type="primary" htmlType="submit">
+            Guardar
           </Button>
         </Item>
       </Form>

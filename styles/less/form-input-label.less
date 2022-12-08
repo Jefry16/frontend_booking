@@ -5,8 +5,15 @@ div.ant-form-item {
     .ant-col.ant-form-item-label {
       text-align: initial;
     }
-    .ant-form-item-required::before, .ant-form-item-required::after {
-      content: unset ;
+    .ant-form-item-required::before,
+    .ant-form-item-required::after {
+      content: unset;
     }
+  }
+}
+
+.ant-col.ant-form-item-label {
+  label::after {
+    content: unset;
   }
 }

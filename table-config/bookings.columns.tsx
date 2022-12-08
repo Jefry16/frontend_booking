@@ -2,7 +2,7 @@ import { ColumnsType } from "antd/lib/table";
 
 export const columns: ColumnsType = [
   {
-    title: "Nombres",
+    title: "Nombre",
     dataIndex: "client",
     key: "client",
     render: (text) => text.first_name + " " + text.last_name,

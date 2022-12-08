@@ -1,24 +1,51 @@
 @use "../variables.scss" as v;
 
 .container {
-  border: 1px solid red;
-  width: 100%;
   height: 100%;
-  // .layout {
-  //   display: flex;
-  //   border-top: 1px solid v.$primaryColor;
-  //   align-items: stretch;
-  //   height: 100%;
+  .layout {
+    border-top: 1px solid v.$primaryColor;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 7rem;
+    height: -moz-calc(100% - 55px);
+    height: -webkit-calc(100% - 55px);
+    height: -o-calc(100% - 55px);
+    height: calc(100% - 55px);
 
-  //   .sidebar {
-  //     width: 385px;
-  //     padding-left: 50px;
-  //     padding-right: 50px;
-  //     border-right: 1px solid v.$primaryColor;
-  //   }
+    .sidebar {
+      width: 273px;
+      padding-top: 61px;
+      height: 100%;
+    }
 
-  //   .content {
-  //     width: 100%;
-  //   }
-  // }
+    .divider {
+      border-color: v.$primaryColor;
+      height: 100%;
+      max-height: 652px;
+      margin-top: 61px;
+    }
+
+    .content {
+      margin-top: 61px;
+      width: 100%;
+      height: 100%;
+      max-height: 652px;
+      display: flex;
+      flex-direction: column;
+      .table {
+        max-height: 90%;
+        overflow: scroll;
+      }
+
+      .buttons {
+        margin-top: auto;
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        gap: 16px;
+      }
+    }
+  }
 }

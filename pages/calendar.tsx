@@ -1,3 +1,3 @@
 export default function Page() {
-  return <h1>Calendar</h1>;
+  return <h1>Calendario</h1>;
 }

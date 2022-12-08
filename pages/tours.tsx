@@ -12,9 +12,9 @@ export default function Tours() {
     <>
       {tourForm && <NewTour onCancel={() => setTourForm(false)} />}
       <header className={styles.header}>
-        <h1>Tours</h1>
+        <h1>Servicios</h1>
         <Button type="primary" onClick={() => setTourForm(true)}>
-          Nuevo tour
+          Nuevo servicio
         </Button>
       </header>
       <CustomTable columns={columns} url="tours" actions={[test, remove]} />
